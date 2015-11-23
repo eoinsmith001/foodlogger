@@ -2,6 +2,7 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   serveStatic = require('serve-static'),
   mongoose = require('mongoose'),
+  morgan = require('morgan'),
   cors = require('cors');
 var MealEntry = require('./app/models/MealEntry');
 var app = express();
@@ -18,7 +19,7 @@ apiRouter.route('/')
       message: 'Welcome to the API'
     });
   });
-app.use(serveStatic(__dirname+'/public'));
+app.use(serveStatic(__dirname+'/build'));
 app.use('/api',apiRouter);
 app.listen(port, function() {
   console.log('App running on port ', port);

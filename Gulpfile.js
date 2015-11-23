@@ -30,7 +30,7 @@ function buildScript(file, watch) {
   var bundler = watch ? watchify(browserify(props)) : browserify(props);
   bundler.transform(reactify);
   function rebundle() {
-    var stream = bundler.bundle({debug: true});
+    var stream = bundler.bundle();
     return stream.on('error', handleErrors)
     .pipe(source(file))
     .pipe(gulp.dest(buildDir + '/'));
